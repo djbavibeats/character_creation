@@ -1,0 +1,70 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body
+{
+    overflow: hidden;
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+.customization_interface {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    right: 5%;
+    bottom: 12.5%;
+    z-index: 10;
+}
+
+.customization_interface_section {
+    border: 1px solid blue;
+    padding: 15px;
+}
+
+.customization_interface_label {
+    text-align: center;
+}
+
+.customization_interface_button {
+    width: 75px;
+    background: black;
+    padding: 10px;
+}
+
+.color_picker {
+    width: 95px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.save_button_wrapper {
+    position: fixed;
+    bottom: 5%;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: flex;
+    width: 150px;
+}
+
+.save_button {
+    width: 100%;
+    background: black;
+    padding: 5px;
+    color: white;
+    text-align: center;
+    font-family: 'Helvetica';
+}
