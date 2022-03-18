@@ -28,7 +28,7 @@ export default class Environment {
         this.sunLight.shadow.camera.far = 15
         this.sunLight.shadow.mapSize.set(1024, 1024)
         this.sunLight.shadow.normalBias = 0.05
-        this.sunLight.position.set(3.5, 2, - 1.25)
+        this.sunLight.position.set(5, 5, 10.25)
         this.scene.add(this.sunLight)
     }
 
@@ -45,7 +45,7 @@ export default class Environment {
             mieCoefficient: 0.005,
             mieDirectionalG: 0.7,
             elevation: 1.25,
-            azimuth: 145,
+            azimuth: 105,
             exposure: .75
         }
 
