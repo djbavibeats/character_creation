@@ -19,7 +19,7 @@ document.getElementById('save_button').addEventListener('click', () => {
       navigator.share({
         title: 'Trinity of Terror Tour',
         text: `I'm going to the Trinity of Terror Tour!`,
-        files: file[0]
+        files: file
       })
         .then(() => {
           console.log('successful share')
