@@ -15,5 +15,10 @@ export default [
         name: 'characterModel',
         type: 'gltfModel',
         path: 'models/Character/glTF/Character.gltf'
+    },
+    {
+        name: 'glassesModel',
+        type: 'gltfModel',
+        path: 'models/Character/glTF/Glasses.gltf'
     }
 ]

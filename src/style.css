@@ -23,7 +23,7 @@ body
     display: flex;
     flex-direction: column;
     right: 5%;
-    bottom: 12.5%;
+    bottom: 5%;
     z-index: 10;
 }
 
@@ -39,11 +39,17 @@ body
 .customization_interface_button {
     width: 75px;
     background: black;
+    color: white;
+    text-align: center;
     padding: 10px;
 }
 
+.customization_interface_button:hover {
+    cursor: pointer;
+}
+
 .color_picker {
-    width: 100%;
+    width: 95px;
     border: none;
     outline: none;
     background-color: transparent;

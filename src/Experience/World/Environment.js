@@ -2,9 +2,8 @@ import * as THREE from 'three'
 import Experience from '../Experience.js'
 
 import { Sky } from 'three/examples/jsm/objects/Sky.js'
-import { Water } from 'three/examples/jsm/objects/Water.js'
 
-let sky, sun, water
+let sky, sun
 export default class Environment {
     constructor() {
         this.experience = new Experience()
@@ -20,13 +19,7 @@ export default class Environment {
 
         this.setSunLight()
         this.setSky()
-        this.setWater()
-        this.setWaterAnimation()
         this.setEnvironmentMap()
-
-        this.time.on('tick', () => {
-            this.setWaterAnimation()
-        })
     }
 
     setSunLight() {
@@ -48,15 +41,13 @@ export default class Environment {
 
         const effectController = {
             turbidity: 20.0,
-            rayleigh: 3,
+            rayleigh: 1,
             mieCoefficient: 0.005,
             mieDirectionalG: 0.7,
-            elevation: -5,
-            azimuth: 180,
-            exposure: 1.75
-        };
-
-
+            elevation: 1.25,
+            azimuth: 145,
+            exposure: .75
+        }
 
         const uniforms = sky.material.uniforms;
         uniforms[ 'turbidity' ].value = effectController.turbidity
@@ -71,41 +62,6 @@ export default class Environment {
         sun.setFromSphericalCoords( 1, phi, theta )
 
         uniforms[ 'sunPosition' ].value.copy( sun )
-    }
-
-    setWater() {
-        const waterGeometry = new THREE.PlaneGeometry( 10000, 10000 );
-
-				water = new Water(
-					waterGeometry,
-					{
-						textureWidth: 512,
-						textureHeight: 512,
-						waterNormals: new THREE.TextureLoader().load( 'textures/water/waternormals.jpg', function ( texture ) {
-
-							texture.wrapS = texture.wrapT = THREE.RepeatWrapping
-
-						} ),
-						sunDirection: new THREE.Vector3(),
-						sunColor: 0xffffff,
-						waterColor: 0x001e0f,
-						distortionScale: 3.7,
-						fog: this.scene.fog !== undefined
-					}
-				)
-
-                water.material.uniforms.size.value = 10
-                water.material.uniforms.distortionScale = 8
-                water.material.uniforms.elevation = 2
-
-				water.rotation.x = - Math.PI / 2
-
-				this.scene.add( water )
-
-    }
-
-    setWaterAnimation() {
-        water.material.uniforms[ 'time' ].value += 1.0 / 60.0;
     }
 
     setEnvironmentMap() {

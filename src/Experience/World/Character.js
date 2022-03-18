@@ -22,22 +22,36 @@ export default class Character {
         this.resource = this.resources.items.characterModel
         this.setModel()
 
+        
         // Material
-        this.hexadecimalColor = '0xd71bda'
-        this.material = new THREE.MeshStandardMaterial({ color: parseInt(this.hexadecimalColor) })
-        this.material.side = THREE.DoubleSide
-        this.setMaterial()
+        this.hexadecimalColor = '000000'
+        this.material = new THREE.MeshStandardMaterial({ color: '#ff0000' })
+        // this.material.side = THREE.DoubleSide
+        
+        this.glassesResource = this.resources.items.glassesModel
+
+        this.eyewearActive = 'false'
 
         document.getElementById('color_picker').addEventListener('input', (e) => {
             this.hexadecimalColor = parseInt("0x" + e.target.value.toString().substring(1))
             this.material.color.set(this.hexadecimalColor)
             this.setMaterial()
         })
+
+        document.getElementById('eyewear_button').addEventListener('click', (e) => {
+            if (this.eyewearActive === 'true') {
+                this.unsetEyewear()
+                this.eyewearActive = 'false'
+            } else {
+                this.setEyewear()
+                this.eyewearActive = 'true'
+            }
+        })
     }
 
     setModel() {
         this.model = this.resource.scene
-        this.model.scale.set(25, 25, 25)
+        this.model.scale.set(50, 50, 50)
         this.model.position.y = .5
         this.group.add(this.model)
     }
@@ -49,4 +63,18 @@ export default class Character {
             }
         })
     }
+
+    setEyewear() {
+        this.glassesModel = this.glassesResource.scene
+        this.glassesModel.scale.set(52, 50, 54)
+        this.glassesModel.position.set(-0.15, 1.6, 4.33)
+        this.glassesModel.rotation.set(0, 0, -0.038)
+        this.group.add(this.glassesModel)
+    }
+
+    unsetEyewear() {
+        this.group.remove(this.glassesModel)
+    }
+
+
 }
