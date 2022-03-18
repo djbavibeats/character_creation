@@ -23,8 +23,8 @@ export default class Character {
         this.setModel()
 
         // Material
-        this.material = new THREE.MeshStandardMaterial()
         this.hexadecimalColor = '0xd71bda'
+        this.material = new THREE.MeshStandardMaterial({ color: parseInt(this.hexadecimalColor) })
         this.material.side = THREE.DoubleSide
         this.setMaterial()
 
